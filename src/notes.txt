@@ -1,0 +1,9 @@
+May 13, 13.
+
+Added:
+- RS
+  - compare with another symbol
+- Wave
+  - draw waves
+  - save
+  - drop

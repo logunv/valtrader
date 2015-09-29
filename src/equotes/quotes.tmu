@@ -1,0 +1,54 @@
+set TMU ROW MESSAGES NONE;
+
+load data
+	inputfile 'quotes.txt'
+	append
+	format separated by ','
+	discardfile 'quotes.discards'
+	into table quotes (
+	symbol char(9),
+	trade_day date 'YYYY-MM-DD',
+	open_price float external,
+	high float external,
+	low float external,
+	close_price float external,
+	$V integer external,
+	vol ($V/100)
+	);
+/*
+http://ichart.finance.yahoo.com/table.csv?s=qqq&a=8&b=01&c=2004&d=8&e=16&f=2004&g=d&ignore=.csv
+Date,Open,High,Low,Close,Volume,Adj. Close*
+15-Sep-04,35.42,35.45,35.10,35.25,90128704,35.25
+<!-- ichart13.finance.dcn.yahoo.com uncompressed Thu Sep 16 09:26:15 PDT 2004 -->
+*/
+
+
+/* set TMU ROW MESSAGES NONE; */
+
+/*
+
+This is to take care of old data format.
+We don't need this anymore.  Oct 4, 2011
+
+
+load data
+	inputfile 'c:/tmp/quotes.txt'
+	append
+	format separated by ','
+	discardfile 'c:/tmp/quotes.discards'
+	into table quotes (
+	symbol char(9),
+	trade_day date 'D*-Mon-y?Y*',
+	open_price float external,
+	high float external,
+	low float external,
+	close_price float external,
+	$V integer external,
+	vol ($V/100)
+	);
+/*
+http://ichart.finance.yahoo.com/table.csv?s=qqq&a=8&b=01&c=2004&d=8&e=16&f=2004&g=d&ignore=.csv
+Date,Open,High,Low,Close,Volume,Adj. Close*
+15-Sep-04,35.42,35.45,35.10,35.25,90128704,35.25
+<!-- ichart13.finance.dcn.yahoo.com uncompressed Thu Sep 16 09:26:15 PDT 2004 -->
+*/

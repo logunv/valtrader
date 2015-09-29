@@ -1,0 +1,3 @@
+# usage: getyq start_date watchlist...
+echo $* > /tmp/err
+#java GetQuote $*
