@@ -172,7 +172,7 @@ public class Scanner {
 		String[][] params = Utils.parseArgs(system1);
 
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			Vector<Symbol> symbols = getSymbols(db, watchlist);
 			
 			int[] sigs;
@@ -463,7 +463,7 @@ public class Scanner {
 
 	public static Vector<String> getSymbols(String wl) {
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			Vector<Symbol> res1 = getSymbols(db, new String[] { wl });
 			// db.close();
 			Vector<String> res = new Vector<String>();
@@ -502,7 +502,7 @@ public class Scanner {
 	public static Vector<String> getLists() {
 		Vector<String> res = new Vector<String>();
 		try {
-			MyDatabase db = new MyDatabase(); // TODO: reuse connection
+			MyDatabase db = MyDatabase.db;
 			MyStatement st = db
 					.execute("select distinct list from watchlist where upper(show_flag) = 'Y' order by 1");
 			while (st.next()) {
@@ -518,7 +518,7 @@ public class Scanner {
 	public static Vector<String> getSystems() {
 		Vector<String> res = new Vector<String>();
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			MyStatement st = db
 					.execute("select distinct name from setup order by 1");
 			while (st.next()) {
@@ -742,7 +742,7 @@ public class Scanner {
 		try {
 			String sql = "Select * from scan_result order by scan_day desc, symbol ";
 
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			MyStatement st = db.execute(sql);
 			while (st.next()) {
 				result.add(st.getString("symbol") + " " + st.getString("scan")
@@ -769,7 +769,7 @@ public class Scanner {
 		final String[][] params = Utils.parseArgs(system1);
 
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			final Vector<Symbol> symbols = getSymbols(db, watchlist);
 			
 			main.progressBar.setValue(symbols.size());

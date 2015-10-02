@@ -12,15 +12,15 @@ public class MyDatabase {
 
 	static final String DB = "pgsql"; // mysql
 
-	public MyDatabase() {
-		this(DB, USER, PWD);
-	}
+//	public MyDatabase() {
+//		this(DB);
+//	}
 
 	public MyDatabase(String db, String user, String pwd) {
 		try {
 			if (con == null) {
 				if (db.equals("pgsql")) {
-					String url = "jdbc:postgresql:valtrader?user=" + usr + "&password=" + pwd";
+					String url = "jdbc:postgresql:valtrader?user=postgres&password=logu";
 					con = DriverManager.getConnection(url);
 				} else {
 					System.err.println("Unsupported database requested: " + db);
@@ -68,6 +68,11 @@ public class MyDatabase {
 		}
 		st.close();
 		return syms;
+	}
+
+	public static MyDatabase db = null;
+	public static MyDatabase init(String dsn, String user, String pwd) {
+		return db = new MyDatabase(dsn, user, pwd);
 	}
 
 }

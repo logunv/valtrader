@@ -65,6 +65,7 @@ public class ValTrader extends JFrame {
 
 	static public void main(String[] args) throws Exception {
 		props = new Props();
+		MyDatabase.init(props.get("dsn"), props.get("user"), props.get("passwd"));
 		new ValTrader();
 	}
 
@@ -185,7 +186,7 @@ public class ValTrader extends JFrame {
 	// save setup values.
 	void saveSetup() {
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 			String setup = getInput("Setup Name", getCombo(systems));
 
 			if (setup == null)
@@ -1051,7 +1052,7 @@ public class ValTrader extends JFrame {
 	private void loadSystem(String system) {
 
 		try {
-			MyDatabase db = new MyDatabase();
+			MyDatabase db = MyDatabase.db;
 
 			String sql = String.format("select * from setup where name = '%s'",
 					system);
@@ -1563,7 +1564,7 @@ public class ValTrader extends JFrame {
 	boolean optViewText = true, optViewWave = false, optWaveB = false;
 
 	void removeAnnotations() {
-		MyDatabase db = new MyDatabase();
+		MyDatabase db = MyDatabase.db;
 		String sym = symbol.getText().toUpperCase();
 		db.execute("delete from notes where symbol = '" + sym + "'");
 		Quotes.removeAnnotations(sym);

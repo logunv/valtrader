@@ -129,7 +129,7 @@ public class Quotes {
 	int[] volume;
 	Date[] date;
 
-	static MyDatabase db = new MyDatabase();
+	static MyDatabase db = MyDatabase.db;
 
 	static Map<String, Quotes> cache = new HashMap<String, Quotes>();
 

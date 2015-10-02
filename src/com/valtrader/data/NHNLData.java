@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class NHNLData {
 //	static NHNL [] nhnldata = null;
 	static HashMap<String,NHNL[]> cache = new HashMap<String, NHNL[]>();
-	static MyDatabase db = new MyDatabase();
+	static MyDatabase db = MyDatabase.db;
 
 //	static public NHNL [] get(String period) {
 //		try {

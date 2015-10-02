@@ -21,7 +21,7 @@ import com.valtrader.data.MyStatement;
 import com.valtrader.service.Quotes;
 
 public class Alerts {
-	static MyDatabase db = new MyDatabase();
+	static MyDatabase db = MyDatabase.db;
 
 	static void add(ValTrader app) {
 		(new AlertDialog(app, db)).setVisible(true);

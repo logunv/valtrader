@@ -10,6 +10,9 @@ public class Props extends Properties {
 		load(Props.class.getClassLoader().getResourceAsStream(propFile));
 	}
 
+	public String get(String key) {
+		return get(key, null);
+	}
 	public String get(String key, String def) {
 		String val = getProperty(key);
 		if(val == null) return def;
