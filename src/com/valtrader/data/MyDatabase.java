@@ -22,9 +22,6 @@ public class MyDatabase {
 				if (db.equals("pgsql")) {
 					String url = "jdbc:postgresql:valtrader?user=" + usr + "&password=" + pwd";
 					con = DriverManager.getConnection(url);
-//				} else if (db.equals("mysql")) {
-//					String url = "jdbc:postgresql:valtrader?user=postgres&password=logu";
-//					con = DriverManager.getConnection(url);
 				} else {
 					System.err.println("Unsupported database requested: " + db);
 					System.exit(1);
