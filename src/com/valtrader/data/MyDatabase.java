@@ -10,21 +10,17 @@ public class MyDatabase {
 	// private ResultSet rs = null;
 	// private Statement st = null;
 
-	static final String DB = "pgsql"; // mysql, rbw
+	static final String DB = "pgsql"; // mysql
 
 	public MyDatabase() {
-		this(DB);
+		this(DB, USER, PWD);
 	}
 
-	public MyDatabase(String db) {
+	public MyDatabase(String db, String user, String pwd) {
 		try {
 			if (con == null) {
-				if (db.equals("rbw")) {
-					Class.forName("redbrick.jdbc.RBWDriver");
-					String url = "jdbc:rbw:protocol:localhost:5050/stocks/?UID=system&PWD=manager";
-					con = DriverManager.getConnection(url);
-				} else if (db.equals("pgsql")) {
-					String url = "jdbc:postgresql:valtrader?user=postgres&password=logu";
+				if (db.equals("pgsql")) {
+					String url = "jdbc:postgresql:valtrader?user=" + usr + "&password=" + pwd";
 					con = DriverManager.getConnection(url);
 //				} else if (db.equals("mysql")) {
 //					String url = "jdbc:postgresql:valtrader?user=postgres&password=logu";
