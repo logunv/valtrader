@@ -1,3 +1,7 @@
+/**
+ * Scanner - scan for a given setup system.
+ */
+
 package com.valtrader.service;
 
 import java.sql.Date;
@@ -13,6 +17,7 @@ import com.valtrader.utils.Candle;
 import com.valtrader.utils.Utils;
 
 public class Scanner {
+	// get message of the market
 	static public int [] getMOM1(Quotes quote) {
 		int [] ret = new int[quote.size()];
 
@@ -43,6 +48,7 @@ public class Scanner {
 		return ret;
 	}
 
+	// get message of the market using candlestick system.
 	static public Vector<String> getMOM(Quotes quote) {
 		
 		// get Message of the Market
@@ -154,7 +160,8 @@ public class Scanner {
 		
 		return ret;
 	}
-	
+
+	// scan for a given system
 	static public Vector<String> scan(ValTrader main, String sys,
 			String watchlist, int st, int end, String dir, boolean stopAtFirst,
 			Callback callback) {
@@ -499,6 +506,7 @@ public class Scanner {
 
 	}
 
+	// get watch lists
 	public static Vector<String> getLists() {
 		Vector<String> res = new Vector<String>();
 		try {
@@ -515,6 +523,7 @@ public class Scanner {
 		return res;
 	}
 
+	// get all the setup systems
 	public static Vector<String> getSystems() {
 		Vector<String> res = new Vector<String>();
 		try {
@@ -527,6 +536,7 @@ public class Scanner {
 			st.close();
 
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
 		}
 
 		return res;
