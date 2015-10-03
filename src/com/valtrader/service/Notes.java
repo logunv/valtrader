@@ -1,3 +1,8 @@
+/**
+ * Handle Notes in the chart.
+ * It has position and the text
+ */
+ 
 package com.valtrader.service;
 
 import java.sql.Date;
