@@ -1,3 +1,7 @@
+/**
+ * Query interface through JDBC Statement.
+ */ 
+ 
 package com.valtrader.data;
 
 import java.sql.Connection;
