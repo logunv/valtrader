@@ -1,3 +1,7 @@
+/**
+ * NHNL - New High New Low object service.
+ */
+ 
 package com.valtrader.data;
 
 import java.sql.Date;
