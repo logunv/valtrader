@@ -1,3 +1,9 @@
+/**
+ * Interface to quotes data.
+ * Supports stocks, futures, and forex.
+ * Maintains cache.
+ */
+ 
 package com.valtrader.service;
 
 import java.sql.Date;
@@ -31,6 +37,8 @@ public class Quotes {
 			}
 			st.close();
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			// throw Exception
 		}
 	}
 
