@@ -1,3 +1,12 @@
+/**
+ * MyDatabase - interface to databases; supports Postgres, MySQL.
+ * All the calls to databases go through this class. No direct access
+ * to JDBC from other place is recommended.
+ * Currently it supports postgres only.
+ * To support othe DB, just add driver and connection details.
+ * The rest work as is.
+ */
+
 package com.valtrader.data;
 
 import java.sql.Connection;
@@ -6,21 +15,11 @@ import java.util.Vector;
 
 public class MyDatabase {
 	static private Connection con = null;
-
-	// private ResultSet rs = null;
-	// private Statement st = null;
-
-	static final String DB = "pgsql"; // mysql
-
-//	public MyDatabase() {
-//		this(DB);
-//	}
-
-	public MyDatabase(String db, String user, String pwd) {
+	public MyDatabase(String dsn, String user, String pwd) {
 		try {
 			if (con == null) {
-				if (db.equals("pgsql")) {
-					String url = "jdbc:postgresql:valtrader?user=postgres&password=logu";
+				if (dsn.equals("pgsql")) {
+					String url = "jdbc:postgresql:valtrader?user=" + user + "&password="+pwd";
 					con = DriverManager.getConnection(url);
 				} else {
 					System.err.println("Unsupported database requested: " + db);
@@ -51,6 +50,7 @@ public class MyDatabase {
 		}
 	}
 
+	// this function does not belong here.
 	public Vector<String> getSymbols(String[] watchList) throws Exception {
 		Vector<String> syms = new Vector<String>();
 		String l = "(";
@@ -74,5 +74,4 @@ public class MyDatabase {
 	public static MyDatabase init(String dsn, String user, String pwd) {
 		return db = new MyDatabase(dsn, user, pwd);
 	}
-
 }
